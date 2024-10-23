@@ -1,0 +1,157 @@
+# Git Workflow Guidelines
+
+This guide outlines recommended practices for using Git effectively in your projects.
+
+## 🌳 Branch Management
+
+### Main Branches
+- `main` - Production-ready code
+- `develop` - Integration branch for features
+- `feature/*` - New features
+- `bugfix/*` - Bug fixes
+- `hotfix/*` - Urgent production fixes
+
+### Branch Naming
+```
+feature/add-login
+bugfix/fix-navbar
+hotfix/security-patch
+```
+
+## 🔄 Basic Workflow
+
+1. **Start Fresh**
+   ```bash
+   git fetch origin
+   git checkout main
+   git pull origin main
+   ```
+
+2. **Create Feature Branch**
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+
+3. **Work & Commit**
+   - Make small, logical changes
+   - Commit frequently
+   - Write clear commit messages
+
+4. **Stay Updated**
+   ```bash
+   git fetch origin
+   git rebase origin/main
+   ```
+
+5. **Push Changes**
+   ```bash
+   git push origin feature/your-feature
+   ```
+
+## 👥 Collaboration Best Practices
+
+### Before Starting Work
+1. Check if there's an existing branch/work
+2. Communicate with team members
+3. Update your local repository
+
+### During Development
+1. Commit frequently
+2. Pull/rebase regularly
+3. Test before pushing
+4. Keep branches focused
+
+### Before Merging
+1. Review your changes
+2. Run tests
+3. Update documentation
+4. Resolve conflicts
+
+## 🚫 What to Avoid
+
+1. **Never Force Push to Main**
+   ```bash
+   # DON'T DO THIS
+   git push -f origin main
+   ```
+
+2. **Don't Commit Direct to Main**
+   - Always use feature branches
+   - Get code review when possible
+
+3. **Avoid Large Commits**
+   - Split big changes into smaller ones
+   - Each commit should be reviewable
+
+4. **Don't Rewrite Public History**
+   - Avoid rebase on shared branches
+   - Don't force push to shared branches
+
+## 🔍 Code Review Process
+
+1. **Before Review**
+   - Test your changes
+   - Self-review your code
+   - Update documentation
+
+2. **During Review**
+   - Respond to comments promptly
+   - Be open to feedback
+   - Explain your decisions
+
+3. **After Review**
+   - Address all comments
+   - Test changes again
+   - Update if needed
+
+## 🆘 Handling Common Situations
+
+### When You Need to Switch Tasks
+```bash
+git stash save "work in progress"
+git checkout other-branch
+# ... do other work ...
+git checkout original-branch
+git stash pop
+```
+
+### When There Are Conflicts
+1. Get latest changes
+   ```bash
+   git fetch origin
+   git rebase origin/main
+   ```
+2. Resolve conflicts in your editor
+3. Continue rebase
+   ```bash
+   git add resolved-file
+   git rebase --continue
+   ```
+
+### When You Need to Undo
+- Last commit: `git reset HEAD~1`
+- Uncommitted changes: `git checkout -- file`
+- Wrong branch: `git checkout correct-branch`
+
+## 📈 Maintaining Clean History
+
+1. **Regular Maintenance**
+   - Delete merged branches
+   - Keep local repo updated
+   - Clean up stale branches
+
+2. **Before Pushing**
+   - Review your commits
+   - Squash related commits
+   - Ensure clear commit messages
+
+## 🎓 Learning More
+
+1. **Git Documentation**
+   - [Official Git Documentation](https://git-scm.com/doc)
+   - [Git Book](https://git-scm.com/book/en/v2)
+
+2. **Practice**
+   - Create personal projects
+   - Contribute to open source
+   - Try different workflows
