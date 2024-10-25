@@ -1,1 +1,4 @@
 This is to show how to add a document to git
+
+This shows how to make changes on Github
+
